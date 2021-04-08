@@ -23,15 +23,14 @@ class Turn extends Game {
             playerAttacked = playersBatch.find(player => player.name.toLowerCase() === playerAttacked.toLowerCase());
   
             let atkType = prompt("Do you want to use your special attack ? (y/n)");
-  
-            if (atkType === "y" || atkType === "yes") {
-                let nbDmg = playersBatch[i].specialAtk(playerAttacked);
+            let nbDmg;
+
+            if (atkType === "y") {
+                nbDmg = playersBatch[i].specialAtk(playerAttacked);
             } else {
-                let nbDmg = playersBatch[i].dealDamage(playerAttacked);
+                nbDmg = playersBatch[i].dealDamage(playerAttacked);
             }
-            console.log(`${playersBatch[i].name} attacking ${playerAttacked.name}.\n 
-                         ${playersBatch[i].name} gives ${nbDmg} dammages to ${playerAttacked.name}.\n 
-                         ${playerAttacked.name} have ${playerAttacked.hp} life_points.`);
+            console.log(`\n${playersBatch[i].name} attacking ${playerAttacked.name}.\n ${playersBatch[i].name} gives ${nbDmg} dammages to ${playerAttacked.name}.\n ${playerAttacked.name} have ${playerAttacked.hp} life_points.`);
         }
         let stillAlive = playersBatch.filter(player => player.isAlive());
         stillAlive.map(player => 
