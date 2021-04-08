@@ -38,28 +38,29 @@ class Character {
     
     winMana = () => {
         this.mana += 20;
+        let playerClass;
 
-        if (newPlayerClass === 'Assassin') {
+        if (playerClass === 'Assassin') {
             if (this.mana >= 20){
                 this.mana = 20;
             }
         }
-        if (newPlayerClass === 'Berzerker') {
+        if (playerClass === 'Berzerker') {
             if (this.mana > 0){
                 this.mana = 0;
             }
         }
-        if (newPlayerClass === 'Fighter') {
+        if (playerClass === 'Fighter') {
             if (this.mana >= 40){
                 this.mana = 40;
             }
         }
-        if (newPlayerClass === 'Monk') {
+        if (playerClass === 'Monk') {
             if (this.mana >= 200){
                 this.mana = 200;
             }
         }
-        if (newPlayerClass === 'Paladin') { 
+        if (playerClass === 'Paladin') { 
             if (this.mana > 160){
                 this.mana = 160;
             }
