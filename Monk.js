@@ -15,17 +15,6 @@ class Monk extends Character{
             console.log("Mana\'s required for using that spell.");
         }
     }
-    printStatus(){
-        if (this.hp > 0 && Game.turnLeft === 0){
-            return this.status = 'winner'
-        }
-        else if (this.hp <= 0 && Game.turnLeft > 0){
-            return this.status = 'loser';
-        }
-        else {
-            return this.status = 'Playing';
-        }
-    }
 }
 let moana = new Monk("Moana");
 Character.instances.push(moana);

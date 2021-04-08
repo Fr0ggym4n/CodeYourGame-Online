@@ -1,5 +1,9 @@
+const LOSER = 'Loser';
+const WINNER = 'Winner';
+const PLAYING = 'Playing';
+
 class Character {
-    constructor(hp, dmg, mana, status = 'Playing'){
+    constructor(hp, dmg, mana, status = PLAYING){
         this.hp = hp;
         this.dmg = dmg;
         this.mana = mana;
@@ -9,14 +13,14 @@ class Character {
     isAlive = () => {
         if (this.hp > 0) return true;
         else {
-            this.status = 'Loser';
+            this.status = LOSER;
             return false;
         }
     }
 
     takeDamage = (dmgReceived) => {
         if (this.isAlive()) this.hp -= dmgReceived;
-        else this.status = 'Loser';
+        else this.status = LOSER;
     }
 
     dealDamage = (victim) => {
@@ -24,7 +28,7 @@ class Character {
             victim.hp -= this.dmg;
 
             if(victim.hp < 1){
-                victim.status = 'Loser';
+                victim.status = LOSER;
                 console.log(`${this.name} kill ${victim.name}, ${this.name} win 20 mana`);
                 this.winMana();
             }
@@ -35,27 +39,27 @@ class Character {
     winMana = () => {
         this.mana += 20;
 
-        if (playerClass === 'Assassin') {
+        if (newPlayerClass === 'Assassin') {
             if (this.mana >= 20){
                 this.mana = 20;
             }
         }
-        if (playerClass === 'Berzerker') {
+        if (newPlayerClass === 'Berzerker') {
             if (this.mana > 0){
                 this.mana = 0;
             }
         }
-        if (playerClass === 'Fighter') {
+        if (newPlayerClass === 'Fighter') {
             if (this.mana >= 40){
                 this.mana = 40;
             }
         }
-        if (playerClass === 'Monk') {
+        if (newPlayerClass === 'Monk') {
             if (this.mana >= 200){
                 this.mana = 200;
             }
         }
-        if (playerClass === 'Paladin') { 
+        if (newPlayerClass === 'Paladin') { 
             if (this.mana > 160){
                 this.mana = 160;
             }
@@ -71,6 +75,6 @@ Character.getAlivedPlayers = () => {
 }
 
 Character.shufflePlayer = () => {
-    let newBatch = Character.instances.filter(player => player.status != 'Loser');
+    let newBatch = Character.instances.filter(player => player.status != LOSER);
     return newBatch.sort(() => Math.random() - 0.5);
 }

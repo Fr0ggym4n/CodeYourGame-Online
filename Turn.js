@@ -30,7 +30,7 @@ class Turn extends Game {
             } else {
                 nbDmg = playersBatch[i].dealDamage(playerAttacked);
             }
-            console.log(`\n${playersBatch[i].name} attacking ${playerAttacked.name}.\n ${playersBatch[i].name} gives ${nbDmg} dammages to ${playerAttacked.name}.\n ${playerAttacked.name} have ${playerAttacked.hp} life_points.`);
+            console.log(`\n ${playersBatch[i].name} attacking ${playerAttacked.name}.\n ${playersBatch[i].name} gives ${nbDmg} dammages to ${playerAttacked.name}.\n ${playerAttacked.name} have ${playerAttacked.hp} life_points.`);
         }
         let stillAlive = playersBatch.filter(player => player.isAlive());
         stillAlive.map(player => 
