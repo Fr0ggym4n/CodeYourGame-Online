@@ -16,14 +16,7 @@ class Game {
       Character.getAlivedPlayers().map(player => console.log(`${player.name} still have ${player.hp} life_points.`));
       console.log("The other players are dead");
     }
-
-    targetPlayer = (playersBatch = Character.instances, i, playerAttacked = ' ') => {
-      if (playersBatch.filter(player => player.name.toLowerCase() 
-        !== playersBatch[i].name.toLowerCase()).find(player => player.name.toLowerCase() === playerAttacked.toLowerCase()) === undefined) {
-        return false;
-      } else return true;
-    }
-
+    
     newPlayer = (playerClass, newPlayersName) => {
       if (playerClass === "fighter") {
         let newPlayer = new Fighter(`${newPlayersName}`);
