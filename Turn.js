@@ -5,9 +5,16 @@ class Turn extends Game {
         
     }
 
-    nbTurn = () => {
-        this.nbLeft += 1;
+    newRound = () => {
+        this.nbTurn += 1;
     }
+
+    targetPlayer= (playersBatch = Character.instances, i, playerAttacked = ' ') => {
+        if (playersBatch.filter(player => player.name.toLowerCase() 
+          !== playersBatch[i].name.toLowerCase()).find(player => player.name.toLowerCase() === playerAttacked.toLowerCase()) === undefined) {
+          return false;
+        } else return true;
+      }
 
     startTurn = () => {
         let playersBatch = Character.shufflePlayer();
@@ -36,8 +43,8 @@ class Turn extends Game {
         stillAlive.map(player => 
             console.log(`\n ${player.name} is still alive with ${player.hp} life_points and ${player.mana} mana_points.`)
         );
+        this.newRound();
         this.newTurn();
-        this.nbTurn();
         return stillAlive;
     }
 }
